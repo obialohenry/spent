@@ -1,0 +1,1 @@
+export 'package:spent/view/components/custom_texts.dart';

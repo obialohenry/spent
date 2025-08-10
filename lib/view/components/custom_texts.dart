@@ -49,8 +49,8 @@ class TextView extends StatelessWidget {
         style:
             textStyle ??
             TextStyle(
-              fontFamily: fontFamily ?? 'Campton',
-              fontSize: fontSize != null ? fontSize! : 14,
+              fontFamily: fontFamily ?? SpentStrings.inter,
+              fontSize: fontSize != null ? fontSize! : 16,
               fontWeight: fontWeight ?? FontWeight.w400,
               color: color ?? SpentColors.kTextBlack,
               decoration: decoration,

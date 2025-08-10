@@ -1,0 +1,1 @@
+export 'package:spent/view/screens/dashboard/splash_screen.dart';

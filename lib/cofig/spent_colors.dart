@@ -5,4 +5,5 @@ class SpentColors {
   static const kTextBlack = Color(0xff1A1F1F);
   static const kIvoryWhite = Color(0xffFDFFF7);
   static const kMintWhisper = Color(0xffF1FEEA);
+  static const kWhite = Color(0xffffffff);
 }

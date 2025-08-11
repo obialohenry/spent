@@ -4,6 +4,7 @@ import 'package:spent/cofig/spent_strings.dart';
 import 'package:spent/utils/enums.dart';
 
 class SpentButtonMain extends StatelessWidget {
+  ///Creates a display widget for action button's used in app.
   const SpentButtonMain(
       {super.key,
       this.onPressed,

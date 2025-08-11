@@ -4,6 +4,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:spent/utils/enums.dart';
 
 class ImageView extends StatelessWidget {
+  ///Creates a widget displaying an image of four types namely
+  ///SVG, Network, Asset, File.
   final String? url;
   final String? placeholder;
   final Color? color;

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:spent/cofig/spent_images.dart';
 import 'package:spent/src/components.dart';
 import 'package:spent/src/config.dart';
+import 'package:spent/view/components/button.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -14,14 +16,30 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: SpentColors.kMintWhisper,
-      body: Column(
-        children: [
-          TextView(
-            text: SpentStrings.trackYourSpendingEffortlessly,
-            fontWeight: FontWeight.bold,
-            fontSize: 22,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+          child: Column(
+            children: [
+              TextView(
+                text: SpentStrings.trackYourSpendingEffortlessly,
+                fontWeight: FontWeight.bold,
+                fontSize: 22,
+              ),
+              Gap(8),
+              ImageView.asset(SpentImages.noteDollarIcon, scale: 2.0),
+              Gap(8),
+              TextView(text: SpentStrings.balanceSheetDescription, fontSize: 16),
+              Gap(16),
+              SpentButtonMain(
+                text: SpentStrings.getStarted,
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                onPressed: () {},
+              )
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

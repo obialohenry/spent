@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:spent/src/config.dart';
 
 class TextView extends StatelessWidget {
+  ///Creates a display widget for local strings.
   const TextView({
     required this.text,
     super.key,

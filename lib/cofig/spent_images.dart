@@ -1,3 +1,5 @@
-const _baseUrl = 'asset/images/';
+const _baseUrl = 'assets/images/';
 
-class SpentImages {}
+class SpentImages {
+  static const noteDollarIcon = '${_baseUrl}dollar_note_icon.png';
+}

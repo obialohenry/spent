@@ -12,6 +12,7 @@ class OnboardingScreen extends StatefulWidget {
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +28,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 fontSize: 22,
               ),
               Gap(8),
-              ImageView.asset(SpentImages.noteDollarIcon, scale: 2.0),
+              TweenAnimationBuilder(
+                tween: Tween(begin: 0.8, end: 1.0),
+                duration: Duration(milliseconds: 350),
+                curve: Curves.easeOutBack,
+                builder: (context, value, child) {
+                  return Transform.scale(
+                    scale: value,
+                    child: ImageView.asset(SpentImages.noteDollarIcon, scale: 2.0),
+                  );
+                },
+              ),
               Gap(8),
               TextView(text: SpentStrings.balanceSheetDescription, fontSize: 16),
               Gap(16),

@@ -68,12 +68,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> with SingleTickerPr
                     Gap(16),
                     TextView(text: SpentStrings.balanceSheetDescription, fontSize: 16, maxLines: 3),
                     Gap(24),
-                    SpentButtonMain(
-                      text: SpentStrings.getStarted,
-                      borderRadius: 8,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      onPressed: () {},
+                    ShimmerSlide(
+                      child: SpentButtonMain(
+                        text: SpentStrings.getStarted,
+                        borderRadius: 8,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        onPressed: () {},
+                      ),
                     ),
                   ],
                 ),

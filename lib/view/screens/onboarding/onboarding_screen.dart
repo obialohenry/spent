@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spent/src/components.dart';
 import 'package:spent/src/config.dart';
-import 'package:spent/view/components/button.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -50,17 +49,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> with SingleTickerPr
                       maxLines: 3,
                     ),
                     Gap(16),
-                    // TweenAnimationBuilder(
-                    //   tween: Tween(begin: 0.0, end: 1.0),
-                    //   duration: Duration(seconds: 5),
-                    //   curve: Curves.easeOutBack,
-                    //   builder: (context, value, child) {
-                    //     return Transform.scale(
-                    //       scale: value,
-                    //       child: ImageView.asset(SpentImages.noteDollarIcon, scale: 2.0),
-                    //     );
-                    //   },
-                    // ),
                     ScaleTransition(
                       scale: _scaleAnimation,
                       child: ImageView.asset(SpentImages.noteDollarIcon, scale: 2.0),

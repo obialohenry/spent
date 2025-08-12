@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:spent/cofig/spent_images.dart';
 import 'package:spent/src/components.dart';
 import 'package:spent/src/config.dart';
 import 'package:spent/view/components/button.dart';
@@ -11,8 +10,24 @@ class OnboardingScreen extends StatefulWidget {
   State<OnboardingScreen> createState() => _OnboardingScreenState();
 }
 
-class _OnboardingScreenState extends State<OnboardingScreen> {
+class _OnboardingScreenState extends State<OnboardingScreen> with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _scaleAnimation;
 
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(vsync: this, duration: Duration(seconds: 4));
+
+    _scaleAnimation = CurvedAnimation(parent: _controller, curve: Curves.easeOutBack);
+    _controller.forward();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,16 +50,20 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       maxLines: 3,
                     ),
                     Gap(16),
-                    TweenAnimationBuilder(
-                      tween: Tween(begin: 0.8, end: 1.0),
-                      duration: Duration(milliseconds: 350),
-                      curve: Curves.easeOutBack,
-                      builder: (context, value, child) {
-                        return Transform.scale(
-                          scale: value,
-                          child: ImageView.asset(SpentImages.noteDollarIcon, scale: 2.0),
-                        );
-                      },
+                    // TweenAnimationBuilder(
+                    //   tween: Tween(begin: 0.0, end: 1.0),
+                    //   duration: Duration(seconds: 5),
+                    //   curve: Curves.easeOutBack,
+                    //   builder: (context, value, child) {
+                    //     return Transform.scale(
+                    //       scale: value,
+                    //       child: ImageView.asset(SpentImages.noteDollarIcon, scale: 2.0),
+                    //     );
+                    //   },
+                    // ),
+                    ScaleTransition(
+                      scale: _scaleAnimation,
+                      child: ImageView.asset(SpentImages.noteDollarIcon, scale: 2.0),
                     ),
                     Gap(16),
                     TextView(text: SpentStrings.balanceSheetDescription, fontSize: 16, maxLines: 3),

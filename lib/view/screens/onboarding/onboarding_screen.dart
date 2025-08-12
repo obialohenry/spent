@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spent/src/components.dart';
 import 'package:spent/src/config.dart';
+import 'package:spent/src/screens.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -24,9 +25,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> with SingleTickerPr
 
   @override
   void dispose() {
-    super.dispose();
     _controller.dispose();
+    super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,7 +64,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> with SingleTickerPr
                         borderRadius: 8,
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (_) => HomeScreen()),
+                          );
+                        },
                       ),
                     ),
                   ],

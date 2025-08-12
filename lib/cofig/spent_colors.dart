@@ -9,4 +9,5 @@ class SpentColors {
   static const kTransparent = Colors.transparent;
   static final kSnowGlass = Colors.white.withAlpha((0.4 * 255).toInt());
   static const kPearlAsh = Color(0xffEEEEED);
+  static const kBrightRed = Color(0xffFF4C4C);
 }

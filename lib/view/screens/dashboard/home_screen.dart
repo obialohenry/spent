@@ -78,69 +78,88 @@ class BalanceSheetSummaryCard extends StatelessWidget {
   final String totalAmount;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(bottom: 8),
-      padding: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-      decoration: BoxDecoration(
-        border: Border.all(color: SpentColors.kPearlAsh),
-        borderRadius: BorderRadius.circular(6),
+    return Dismissible(
+      key: ValueKey(''),
+      direction: DismissDirection.endToStart,
+      background: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(6),
+          color: SpentColors.kBrightRed,
+        ),
+        alignment: Alignment.centerRight,
+        padding: EdgeInsets.only(right: 20),
+        child: Icon(Icons.delete, size: 30, color: Colors.white),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              TextView(text: title, fontSize: 20, fontWeight: FontWeight.bold),
-              TextView(text: amountRemaining, fontSize: 16, color: SpentColors.kPrimary),
-            ],
-          ),
-          Gap(8),
-          RichText(
-            text: TextSpan(
+      onDismissed: (direction) {
+        //TODO:Remove item from list.
+
+        //TODO:Implement my Alert message toast.
+      },
+      child: Container(
+        margin: EdgeInsets.only(bottom: 8),
+        padding: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+        decoration: BoxDecoration(
+          color: SpentColors.kIvoryWhite,
+          border: Border.all(color: SpentColors.kPearlAsh),
+          borderRadius: BorderRadius.circular(6),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                TextSpan(
-                  text: dateCreated,
-                  style: TextStyle(
-                    fontFamily: SpentStrings.inter,
-                    fontSize: 10,
-                    fontWeight: FontWeight.bold,
-                    color: SpentColors.kTextBlack,
-                  ),
-                ),
+                TextView(text: title, fontSize: 20, fontWeight: FontWeight.bold),
+                TextView(text: amountRemaining, fontSize: 16, color: SpentColors.kPrimary),
               ],
-              text: 'Created: ',
-              style: TextStyle(
-                fontFamily: SpentStrings.inter,
-                fontSize: 10,
-                fontWeight: FontWeight.w400,
-                color: SpentColors.kTextBlack,
+            ),
+            Gap(8),
+            RichText(
+              text: TextSpan(
+                children: [
+                  TextSpan(
+                    text: dateCreated,
+                    style: TextStyle(
+                      fontFamily: SpentStrings.inter,
+                      fontSize: 10,
+                      fontWeight: FontWeight.bold,
+                      color: SpentColors.kTextBlack,
+                    ),
+                  ),
+                ],
+                text: 'Created: ',
+                style: TextStyle(
+                  fontFamily: SpentStrings.inter,
+                  fontSize: 10,
+                  fontWeight: FontWeight.w400,
+                  color: SpentColors.kTextBlack,
+                ),
               ),
             ),
-          ),
-          RichText(
-            text: TextSpan(
-              children: [
-                TextSpan(
-                  text: totalAmount,
-                  style: TextStyle(
-                    fontFamily: SpentStrings.inter,
-                    fontSize: 10,
-                    fontWeight: FontWeight.bold,
-                    color: SpentColors.kTextBlack,
+            RichText(
+              text: TextSpan(
+                children: [
+                  TextSpan(
+                    text: totalAmount,
+                    style: TextStyle(
+                      fontFamily: SpentStrings.inter,
+                      fontSize: 10,
+                      fontWeight: FontWeight.bold,
+                      color: SpentColors.kTextBlack,
+                    ),
                   ),
+                ],
+                text: 'Total: ',
+                style: TextStyle(
+                  fontFamily: SpentStrings.inter,
+                  fontSize: 10,
+                  fontWeight: FontWeight.w400,
+                  color: SpentColors.kTextBlack,
                 ),
-              ],
-              text: 'Total: ',
-              style: TextStyle(
-                fontFamily: SpentStrings.inter,
-                fontSize: 10,
-                fontWeight: FontWeight.w400,
-                color: SpentColors.kTextBlack,
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

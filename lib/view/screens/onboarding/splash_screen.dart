@@ -10,41 +10,26 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
-  late List<bool> _visibleLetters;
+class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _textSizeAnimation;
   @override
   void initState() {
     super.initState();
-    _visibleLetters = List.filled(SpentStrings.spent.length, false);
-    _beginAnimation();
-    _navigateToOnboardingScreen();
-  }
+    _controller = AnimationController(vsync: this, duration: Duration(seconds: 2));
+    _textSizeAnimation = Tween<double>(
+      begin: 0.0,
+      end: 70.0,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOutBack));
 
-  /// Starts the animation by:
-  /// 1. Defining a total duration of `1s`.
-  /// 2. Calculating the delay for each letter: `total duration in ms ÷ text length` (integer division).
-  /// 3. Looping through each letter in the text.
-  /// 4. For each letter, scheduling a delayed visibility change:
-  ///    - Delay = `letter index × delay per letter`.
-  /// 5. Updating the state to reveal letters one by one.
-  void _beginAnimation() {
-    final totalDuration = Duration(seconds: 1);
-    final delayPerLetter =
-        totalDuration.inMilliseconds ~/ SpentStrings.spent.length; // integer division
-    for (int i = 0; i < SpentStrings.spent.length; i++) {
-      Future.delayed(Duration(milliseconds: i * delayPerLetter), () {
-        if (mounted) {
-          setState(() {
-            _visibleLetters[i] = true;
-          });
-        }
-      });
-    }
+    _controller.forward();
+
+    _navigateToOnboardingScreen();
   }
 
   /// Waits for `2s` before navigating to the onboarding screen.
   void _navigateToOnboardingScreen() {
-    Future.delayed(Duration(seconds: 2), () {
+    Future.delayed(Duration(seconds: 3), () {
       if (!mounted) return;
       Navigator.pushReplacement(
         context,
@@ -58,21 +43,16 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: SpentColors.kPrimary,
       body: Center(
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: List.generate(SpentStrings.spent.length, (index) {
-            return AnimatedOpacity(
-              opacity: _visibleLetters[index] ? 1.0 : 0.0,
-              duration: Duration(milliseconds: 150),
-              curve: Curves.easeIn,
-              child: TextView(
-                text: SpentStrings.spent[index],
-                fontWeight: FontWeight.bold,
-                fontSize: 70,
-                color: SpentColors.kIvoryWhite,
-              ),
+        child: AnimatedBuilder(
+          animation: _textSizeAnimation,
+          builder: (context, widget) {
+            return TextView(
+              text: SpentStrings.spent,
+              fontWeight: FontWeight.bold,
+              fontSize: _textSizeAnimation.value,
+              color: SpentColors.kIvoryWhite,
             );
-          }),
+          },
         ),
       ),
     );

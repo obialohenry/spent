@@ -36,7 +36,7 @@ class _ShimmerSlideState extends State<ShimmerSlide> with SingleTickerProviderSt
                 SpentColors.kSnowGlass.withAlpha((0.2 *255).toInt()),
                 SpentColors.kTransparent,
               ],
-              // stops: const [0.0, 0.5,1.0],
+              // stops: const [0.0, 0.5, 1.0],
               begin: Alignment(-1.0 + _controller.value * 2, 0),
               end: const Alignment(1.0, 0),
             ).createShader(rect);

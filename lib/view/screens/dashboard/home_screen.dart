@@ -135,7 +135,7 @@ class BalanceSheetSummaryCard extends StatelessWidget {
                     ),
                   ),
                 ],
-                text: 'Created: ',
+                text: '${SpentStrings.tipCreated}: ',
                 style: TextStyle(
                   fontFamily: SpentStrings.inter,
                   fontSize: 10,
@@ -157,7 +157,7 @@ class BalanceSheetSummaryCard extends StatelessWidget {
                     ),
                   ),
                 ],
-                text: 'Total: ',
+                text: '${SpentStrings.tipTotal}: ',
                 style: TextStyle(
                   fontFamily: SpentStrings.inter,
                   fontSize: 10,

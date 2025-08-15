@@ -44,7 +44,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> with SingleTickerPr
                 child: Column(
                   children: [
                     TextView(
-                      text: SpentStrings.trackYourSpendingEffortlessly,
+                      text: SpentStrings.hdrTrackYourSpendingEffortlessly,
                       fontWeight: FontWeight.bold,
                       textAlign: TextAlign.center,
                       fontSize: 22,
@@ -60,7 +60,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> with SingleTickerPr
                     Gap(24),
                     ShimmerSlide(
                       child: SpentButtonMain(
-                        text: SpentStrings.getStarted,
+                        text: SpentStrings.btnGetStarted,
                         borderRadius: 8,
                         fontSize: 16,
                         fontWeight: FontWeight.w600,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spent/src/components.dart';
 import 'package:spent/src/config.dart';
-
+import 'package:spent/src/screens.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -24,16 +24,24 @@ class _HomeScreenState extends State<HomeScreen> {
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 16),
-            child: ShimmerSlide(
-              child: Container(
-                height: 40,
-                width: 40,
-                decoration: BoxDecoration(color: SpentColors.kPrimary, shape: BoxShape.circle),
-                child: Center(
-                  child: Icon(
-                    Icons.arrow_upward_outlined,
-                    color: SpentColors.kIvoryWhite,
-                    size: 25,
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => CreateNewBalanceSheetScreen()),
+                );
+              },
+              child: ShimmerSlide(
+                child: Container(
+                  height: 40,
+                  width: 40,
+                  decoration: BoxDecoration(color: SpentColors.kPrimary, shape: BoxShape.circle),
+                  child: Center(
+                    child: Icon(
+                      Icons.arrow_upward_outlined,
+                      color: SpentColors.kIvoryWhite,
+                      size: 25,
+                    ),
                   ),
                 ),
               ),

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:spent/src/config.dart';
 
-class CustomTextField extends StatefulWidget {
+class SpentTextField extends StatefulWidget {
   ///Creates a widget displaying a customised textfield.
-  const CustomTextField({
+  const SpentTextField({
       super.key,
     this.height,
     this.width,
@@ -66,10 +66,10 @@ class CustomTextField extends StatefulWidget {
   final FormFieldValidator<String>? validator;
   
   @override
-  State<CustomTextField> createState() => _CustomTextFieldState();
+  State<SpentTextField> createState() => _SpentTextFieldState();
 }
 
-class _CustomTextFieldState extends State<CustomTextField> {
+class _SpentTextFieldState extends State<SpentTextField> {
   // myFocusNode = focusNode;
   @override
   Widget build(BuildContext context) {

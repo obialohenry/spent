@@ -12,4 +12,7 @@ class SpentStrings {
   static const btnCancel = 'Cancel';
   static const hintSheetName = 'Sheet Name';
   static const hintTotalAmount = 'Total Amount';
+  static const hdrAddExpense = 'Add Expense';
+  static const hintAmountSpent = 'Amount Spent';
+  static const hintNote = 'Note';
 }

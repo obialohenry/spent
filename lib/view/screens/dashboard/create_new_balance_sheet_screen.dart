@@ -26,7 +26,7 @@ class _CreateNewBalanceSheetScreenState extends State<CreateNewBalanceSheetScree
       backgroundColor: SpentColors.kIvoryWhite,
       appBar: SpentAppBar.mainAppBar(context, title: SpentStrings.hdrCeateNewBalanceSheet),
       body: Padding(
-        padding: EdgeInsetsGeometry.symmetric(vertical: 16, horizontal: 16),
+        padding: EdgeInsetsGeometry.symmetric(vertical: 32, horizontal: 16),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

@@ -8,4 +8,8 @@ class SpentStrings {
   static const tipCreated = 'Created';
   static const tipTotal = 'Total';
   static const hdrCeateNewBalanceSheet = 'Create New Balance Sheet';
+  static const btnSave = 'Save';
+  static const btnCancel = 'Cancel';
+  static const hintSheetName = 'Sheet Name';
+  static const hintTotalAmount = 'Total Amount';
 }

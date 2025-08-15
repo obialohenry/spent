@@ -84,11 +84,11 @@ class BalanceSheetSummaryCard extends StatelessWidget {
       background: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(6),
-          color: SpentColors.kBrightRed,
+          color: SpentColors.kBlushPetal,
         ),
         alignment: Alignment.centerRight,
         padding: EdgeInsets.only(right: 20),
-        child: Icon(Icons.delete, size: 30, color: Colors.white),
+        child: Icon(Icons.delete, size: 30, color: SpentColors.kBrightRed),
       ),
       onDismissed: (direction) {
         //TODO:Remove item from list.

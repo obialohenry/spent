@@ -24,7 +24,11 @@ class _CreateNewBalanceSheetScreenState extends State<CreateNewBalanceSheetScree
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: SpentColors.kIvoryWhite,
-      appBar: SpentAppBar.mainAppBar(context, title: SpentStrings.hdrCeateNewBalanceSheet),
+      appBar: SpentAppBar.mainAppBar(
+        context,
+        title: SpentStrings.hdrCeateNewBalanceSheet,
+        isCreateNewBlnceShtScrn: true,
+      ),
       body: Padding(
         padding: EdgeInsetsGeometry.symmetric(vertical: 32, horizontal: 16),
         child: Column(

@@ -4,9 +4,13 @@ import 'package:spent/src/config.dart';
 
 class SpentAppBar {
   ///Create a widget displaying a back icon and a text title underneath.
-  static PreferredSizeWidget mainAppBar(BuildContext context,{required String title}) {
+  static PreferredSizeWidget mainAppBar(
+    BuildContext context, {
+    required String title,
+    bool isCreateNewBlnceShtScrn = false,
+  }) {
     return PreferredSize(
-      preferredSize: Size(0, 130),
+      preferredSize: Size(0, isCreateNewBlnceShtScrn ? 130 : 90),
       child: SafeArea(
         child: Padding(
           padding: EdgeInsets.only(left: 16, right: 16, top: 16),

@@ -23,7 +23,7 @@ class ColoredTexts extends StatelessWidget {
             ),
           ),
         ],
-        text: '$leadingText: ',
+        text: leadingText,
         style: TextStyle(
           fontFamily: SpentStrings.inter,
           fontSize: 10,

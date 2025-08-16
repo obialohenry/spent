@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:spent/src/components.dart';
 import 'package:spent/src/config.dart';
 import 'package:spent/src/screens.dart';
-import 'package:spent/view/components/colored_texts.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -124,13 +123,11 @@ class BalanceSheetSummaryCard extends StatelessWidget {
               ],
             ),
             Gap(8),
-            ColoredTexts(leadingText: SpentStrings.tipCreated, trailingText: dateCreated),
-            ColoredTexts(leadingText: SpentStrings.tipTotal, trailingText: totalAmount),
+            ColoredTexts(leadingText: '${SpentStrings.tipCreated}: ', trailingText: dateCreated),
+            ColoredTexts(leadingText: '${SpentStrings.tipTotal}: ', trailingText: totalAmount),
           ],
         ),
       ),
     );
   }
 }
-
-

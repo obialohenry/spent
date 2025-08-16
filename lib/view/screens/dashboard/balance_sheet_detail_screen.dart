@@ -23,13 +23,17 @@ class BalanceSheetDetailScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    TextView(
-                      text: '${SpentStrings.tipCreated}: Aug 3',
-                      fontSize: 10,
-                      color: SpentColors.kFrostedSteel,
+                    ColoredTexts(
+                      leadingText: '${SpentStrings.tipCreated}: ',
+                      trailingText: 'Aug 3',
                     ),
                     TextView(text: '₦ 45,000', fontSize: 12, color: SpentColors.kPrimary),
                   ],
+                ),
+                Gap(5),
+                ColoredTexts(
+                  leadingText: '${SpentStrings.tipRemaining}: ',
+                  trailingText: '₦150,000',
                 ),
               ],
             ),

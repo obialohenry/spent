@@ -15,4 +15,5 @@ class SpentStrings {
   static const hdrAddExpense = 'Add Expense';
   static const hintAmountSpent = 'Amount Spent';
   static const hintNote = 'Note';
+  static const tipRemaining = 'Remaining';
 }

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:spent/src/components.dart';
 import 'package:spent/src/config.dart';
 import 'package:spent/src/screens.dart';
+import 'package:spent/view/components/colored_texts.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -122,53 +124,13 @@ class BalanceSheetSummaryCard extends StatelessWidget {
               ],
             ),
             Gap(8),
-            RichText(
-              text: TextSpan(
-                children: [
-                  TextSpan(
-                    text: dateCreated,
-                    style: TextStyle(
-                      fontFamily: SpentStrings.inter,
-                      fontSize: 10,
-                      fontWeight: FontWeight.bold,
-                      color: SpentColors.kTextBlack,
-                    ),
-                  ),
-                ],
-                text: '${SpentStrings.tipCreated}: ',
-                style: TextStyle(
-                  fontFamily: SpentStrings.inter,
-                  fontSize: 10,
-                  fontWeight: FontWeight.w400,
-                  color: SpentColors.kTextBlack,
-                ),
-              ),
-            ),
-            RichText(
-              text: TextSpan(
-                children: [
-                  TextSpan(
-                    text: totalAmount,
-                    style: TextStyle(
-                      fontFamily: SpentStrings.inter,
-                      fontSize: 10,
-                      fontWeight: FontWeight.bold,
-                      color: SpentColors.kTextBlack,
-                    ),
-                  ),
-                ],
-                text: '${SpentStrings.tipTotal}: ',
-                style: TextStyle(
-                  fontFamily: SpentStrings.inter,
-                  fontSize: 10,
-                  fontWeight: FontWeight.w400,
-                  color: SpentColors.kTextBlack,
-                ),
-              ),
-            ),
+            ColoredTexts(leadingText: SpentStrings.tipCreated, trailingText: dateCreated),
+            ColoredTexts(leadingText: SpentStrings.tipTotal, trailingText: totalAmount),
           ],
         ),
       ),
     );
   }
 }
+
+

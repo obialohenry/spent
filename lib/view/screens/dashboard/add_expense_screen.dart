@@ -39,6 +39,7 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
                   child: ShimmerSlide(
                     child: SpentButtonMain(
                       text: SpentStrings.btnSave,
+                      color: SpentColors.kPrimary,
                       borderRadius: 8,
                       fontSize: 16,
                       width: 167,

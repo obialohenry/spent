@@ -39,6 +39,7 @@ class BalanceSheetDetailScreen extends StatelessWidget {
             ),
             Gap(24),
             Divider(color: SpentColors.kFrostedSteel),
+            Gap(24),
             Expanded(
               child: ListView.builder(
                 shrinkWrap: true,
@@ -88,20 +89,20 @@ class Expense extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsGeometry.only(bottom: 16),
+      padding: EdgeInsetsGeometry.only(bottom: 10),
       child: Column(
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              TextView(text: date, fontSize: 12, fontWeight: FontWeight.bold),
+              TextView(text: name, fontSize: 12, fontWeight: FontWeight.bold),
               TextView(text: '₦ $amount', fontSize: 12, fontWeight: FontWeight.bold),
             ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              TextView(text: name, fontSize: 12, fontWeight: FontWeight.w400),
+              TextView(text: date, fontSize: 12, fontWeight: FontWeight.w400),
               TextView(text: amount, fontSize: 12, fontWeight: FontWeight.w400),
             ],
           ),

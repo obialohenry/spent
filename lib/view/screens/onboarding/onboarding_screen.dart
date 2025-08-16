@@ -62,6 +62,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> with SingleTickerPr
                       child: SpentButtonMain(
                         text: SpentStrings.btnGetStarted,
                         borderRadius: 8,
+                        color: SpentColors.kPrimary,
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
                         onPressed: () {

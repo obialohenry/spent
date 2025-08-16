@@ -46,6 +46,7 @@ class _CreateNewBalanceSheetScreenState extends State<CreateNewBalanceSheetScree
                   child: SpentButtonMain(
                     text: SpentStrings.btnSave,
                     borderRadius: 8,
+                    color: SpentColors.kPrimary,
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
                     onPressed: () {

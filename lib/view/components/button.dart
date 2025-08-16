@@ -47,7 +47,7 @@ class SpentButtonMain extends StatelessWidget {
         width: width,
         padding: padding,
         decoration: BoxDecoration(
-            color: color ?? SpentColors.kPrimary,
+          color: color,
 
             /// This line of code is setting the background color of the button. It checks the value of the
             /// `buttonState` parameter and if it is equal to `ButtonState.disabled`, it sets the color to

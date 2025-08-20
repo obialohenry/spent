@@ -27,6 +27,12 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     _navigateToOnboardingScreen();
   }
 
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   /// Waits for `2s` before navigating to the onboarding screen.
   void _navigateToOnboardingScreen() {
     Future.delayed(Duration(seconds: 3), () {

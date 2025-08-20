@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spent/src/components.dart';
 import 'package:spent/src/config.dart';
-import 'package:spent/view/screens/dashboard/balance_sheet_detail_screen.dart';
+import 'package:spent/src/screens.dart';
 
 class CreateNewBalanceSheetScreen extends StatefulWidget {
   const CreateNewBalanceSheetScreen({super.key});

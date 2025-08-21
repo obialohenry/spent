@@ -11,6 +11,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  //TODO:Work on the list display animations
+  //TODO:Get expense sheet list. This list will be of expenseSheetModel type.
+  //TODO:Show an empty item display is list is empty.
   @override
   Widget build(BuildContext context) {
     return Scaffold(

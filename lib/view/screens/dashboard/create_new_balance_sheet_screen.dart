@@ -19,7 +19,10 @@ class _CreateNewBalanceSheetScreenState extends State<CreateNewBalanceSheetScree
     _totalAmountController.dispose();
     super.dispose();
   }
-
+//TODO:Implement creating of expense sheet by adding to list when validation against empty textfield is true.
+  //TODO:Expense sheet will be of type expenseSheetModel.
+  //TODO:Format amount in ₦.
+  //TODO:Save in localdb.
   @override
   Widget build(BuildContext context) {
     return Scaffold(

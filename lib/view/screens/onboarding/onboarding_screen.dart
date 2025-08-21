@@ -17,6 +17,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> with SingleTickerPr
   @override
   void initState() {
     super.initState();
+    //TODO:Set the firstTimeOnApp to false.
     _controller = AnimationController(vsync: this, duration: Duration(seconds: 4));
 
     _scaleAnimation = CurvedAnimation(parent: _controller, curve: Curves.easeOutBack);

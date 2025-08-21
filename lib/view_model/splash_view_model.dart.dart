@@ -13,12 +13,13 @@ import 'package:spent/src/screens.dart';
 //   }
 // });
 
-final onboardingViewModel = ChangeNotifierProvider((ref) => OnboardingViewModel(ref));
+final splashViewModel = ChangeNotifierProvider((ref) => SplashViewModel(ref));
 
-class OnboardingViewModel with ChangeNotifier {
+class SplashViewModel with ChangeNotifier {
   Ref ref;
-  OnboardingViewModel(this.ref);
+  SplashViewModel(this.ref);
   Future<void> checkUser(context) async {
+    //TODO:Get user firstTimeOnApp status.
     await Future.delayed(Duration(seconds: 3));
 
     if (!context.mounted) return;

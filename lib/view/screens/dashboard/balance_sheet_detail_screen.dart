@@ -5,7 +5,8 @@ import 'package:spent/src/screens.dart';
 
 class BalanceSheetDetailScreen extends StatelessWidget {
   const BalanceSheetDetailScreen({super.key});
-
+//TODO:Pass in details of an expense sheet, including the list of expenses which will be of type ExpenseModel.
+  //TODO:Just pass in the ExpenseSheetModel containing everything about a particular expense sheet.
   @override
   Widget build(BuildContext context) {
     return Scaffold(

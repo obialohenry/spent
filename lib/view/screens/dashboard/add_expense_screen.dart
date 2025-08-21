@@ -18,7 +18,8 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
     _noteController.dispose();
     super.dispose();
   }
-
+  //TODO:Implement adding an expense of type ExpenseModel to an expense sheet.
+  //TODO:Save to localdb.
   @override
   Widget build(BuildContext context) {
     return Scaffold(

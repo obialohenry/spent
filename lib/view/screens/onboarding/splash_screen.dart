@@ -33,7 +33,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> with SingleTickerPr
     super.didChangeDependencies();
     if (!_initialized) {
       _initialized = true;
-      ref.read(onboardingViewModel).checkUser(context);
+      ref.read(splashViewModel).checkUser(context);
     }
   }
 

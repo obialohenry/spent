@@ -11,11 +11,11 @@ class AddExpenseScreen extends StatefulWidget {
 
 class _AddExpenseScreenState extends State<AddExpenseScreen> {
   final TextEditingController _amountSpentController = TextEditingController();
-  final TextEditingController _noteController = TextEditingController();
+  final TextEditingController _expenseNameController = TextEditingController();
   @override
   void dispose() {
     _amountSpentController.dispose();
-    _noteController.dispose();
+    _expenseNameController.dispose();
     super.dispose();
   }
   //TODO:Implement adding an expense of type ExpenseModel to an expense sheet.
@@ -31,7 +31,7 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
           children: [
             SpentTextField(controller: _amountSpentController, hint: SpentStrings.hintAmountSpent),
             Gap(16),
-            SpentTextField(controller: _noteController, hint: SpentStrings.hintNote),
+            SpentTextField(controller: _expenseNameController, hint: SpentStrings.hintExpenseName),
             Gap(24),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

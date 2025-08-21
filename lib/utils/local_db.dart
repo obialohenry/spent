@@ -1,1 +1,0 @@
-//TODO:Implement hive as local db.

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:spent/src/components.dart';
 import 'package:spent/src/config.dart';
-import 'package:spent/src/screens.dart';
 import 'package:spent/view_model/splash_view_model.dart.dart';
 
 class SplashScreen extends ConsumerStatefulWidget {
@@ -15,7 +14,7 @@ class SplashScreen extends ConsumerStatefulWidget {
 class _SplashScreenState extends ConsumerState<SplashScreen> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _textSizeAnimation;
-  bool _initialized = false;
+  // bool _initialized = false;
   @override
   void initState() {
     super.initState();
@@ -26,16 +25,18 @@ class _SplashScreenState extends ConsumerState<SplashScreen> with SingleTickerPr
     ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOutBack));
 
     _controller.forward();
+
+    ref.read(splashViewModel).checkUser(context);
   }
 
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    if (!_initialized) {
-      _initialized = true;
-      ref.read(splashViewModel).checkUser(context);
-    }
-  }
+  // @override
+  // void didChangeDependencies() {
+  //   super.didChangeDependencies();
+  //   if (!_initialized) {
+  //     _initialized = true;
+  //     ref.read(splashViewModel).checkUser(context);
+  //   }
+  // }
 
   @override
   void dispose() {

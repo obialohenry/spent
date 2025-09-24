@@ -1,23 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:spent/repository/backend/local_db.dart';
 import 'package:spent/src/components.dart';
 import 'package:spent/src/config.dart';
 import 'package:spent/src/screens.dart';
 
-class OnboardingScreen extends StatefulWidget {
+class OnboardingScreen extends ConsumerStatefulWidget {
   const OnboardingScreen({super.key});
 
   @override
-  State<OnboardingScreen> createState() => _OnboardingScreenState();
+  ConsumerState<OnboardingScreen> createState() => _OnboardingScreenState();
 }
 
-class _OnboardingScreenState extends State<OnboardingScreen> with SingleTickerProviderStateMixin {
+class _OnboardingScreenState extends ConsumerState<OnboardingScreen>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _scaleAnimation;
 
   @override
   void initState() {
     super.initState();
-    //TODO:Set the firstTimeOnApp to false.
+    ref.read(spentLocalDb).addUsersFirstTimeOnAppToDbAsFalse();
     _controller = AnimationController(vsync: this, duration: Duration(seconds: 4));
 
     _scaleAnimation = CurvedAnimation(parent: _controller, curve: Curves.easeOutBack);

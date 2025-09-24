@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:spent/repository/backend/local_db.dart';
 import 'package:spent/src/model.dart';
 import 'package:spent/src/screens.dart';
 // import 'package:spent/src/utils.dart';
@@ -19,8 +20,8 @@ class SplashViewModel with ChangeNotifier {
   Ref ref;
   SplashViewModel(this.ref);
   Future<void> checkUser(context) async {
-    //TODO:Get user firstTimeOnApp status.
-    await Future.delayed(Duration(seconds: 3));
+    ref.read(spentLocalDb).getFirstTimeOnAppStatus();
+    await Future.delayed(Duration(seconds: 2));
 
     if (!context.mounted) return;
 

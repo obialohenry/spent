@@ -18,7 +18,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> with SingleTickerPr
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(vsync: this, duration: Duration(seconds: 2));
+    _controller = AnimationController(vsync: this, duration: Duration(seconds: 1));
     _textSizeAnimation = Tween<double>(
       begin: 0.0,
       end: 70.0,

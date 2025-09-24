@@ -104,7 +104,7 @@ class _BalanceSheetSummaryCardState extends State<BalanceSheetSummaryCard>
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(vsync: this, duration: Duration(seconds: 7));
+    _controller = AnimationController(vsync: this, duration: Duration(milliseconds: 300));
     _fadeAnimation = Tween<double>(begin: 0, end: 1).animate(
       CurvedAnimation(
         parent: _controller,

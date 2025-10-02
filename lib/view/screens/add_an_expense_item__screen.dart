@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:spent/src/components.dart';
 import 'package:spent/src/config.dart';
 
-class AddExpenseScreen extends StatefulWidget {
-  const AddExpenseScreen({super.key});
+class AddAnExpenseItemScreen extends StatefulWidget {
+  const AddAnExpenseItemScreen({super.key});
 
   @override
-  State<AddExpenseScreen> createState() => _AddExpenseScreenState();
+  State<AddAnExpenseItemScreen> createState() => _AddAnExpenseItemScreenState();
 }
 
-class _AddExpenseScreenState extends State<AddExpenseScreen> {
+class _AddAnExpenseItemScreenState extends State<AddAnExpenseItemScreen> {
   final TextEditingController _amountSpentController = TextEditingController();
   final TextEditingController _expenseNameController = TextEditingController();
   @override
@@ -18,8 +18,6 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
     _expenseNameController.dispose();
     super.dispose();
   }
-  //TODO:Implement adding an expense of type ExpenseModel to an expense sheet.
-  //TODO:Save to localdb.
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +44,6 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
                       width: 167,
                       fontWeight: FontWeight.w600,
                       onPressed: () {
-                        //TODO:save an expense.
                         Navigator.pop(context);
                       },
                     ),

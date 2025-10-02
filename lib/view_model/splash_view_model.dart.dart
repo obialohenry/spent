@@ -31,7 +31,10 @@ class SplashViewModel with ChangeNotifier {
         MaterialPageRoute(builder: (context) => OnboardingScreen()),
       );
     } else {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => ExpenseSheetsScreen()),
+      );
     }
   }
 }

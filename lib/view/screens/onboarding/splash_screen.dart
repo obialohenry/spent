@@ -28,16 +28,6 @@ class _SplashScreenState extends ConsumerState<SplashScreen> with SingleTickerPr
 
     ref.read(splashViewModel).checkUser(context);
   }
-
-  // @override
-  // void didChangeDependencies() {
-  //   super.didChangeDependencies();
-  //   if (!_initialized) {
-  //     _initialized = true;
-  //     ref.read(splashViewModel).checkUser(context);
-  //   }
-  // }
-
   @override
   void dispose() {
     _controller.dispose();

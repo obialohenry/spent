@@ -3,14 +3,14 @@ import 'package:spent/src/components.dart';
 import 'package:spent/src/config.dart';
 import 'package:spent/src/screens.dart';
 
-class CreateNewBalanceSheetScreen extends StatefulWidget {
-  const CreateNewBalanceSheetScreen({super.key});
+class CreateNewExpenseSheetScreen extends StatefulWidget {
+  const CreateNewExpenseSheetScreen({super.key});
 
   @override
-  State<CreateNewBalanceSheetScreen> createState() => _CreateNewBalanceSheetScreenState();
+  State<CreateNewExpenseSheetScreen> createState() => _CreateNewExpenseSheetScreenState();
 }
 
-class _CreateNewBalanceSheetScreenState extends State<CreateNewBalanceSheetScreen> {
+class _CreateNewExpenseSheetScreenState extends State<CreateNewExpenseSheetScreen> {
   final TextEditingController _sheetNameController = TextEditingController();
   final TextEditingController _totalAmountController = TextEditingController();
   @override
@@ -19,10 +19,6 @@ class _CreateNewBalanceSheetScreenState extends State<CreateNewBalanceSheetScree
     _totalAmountController.dispose();
     super.dispose();
   }
-//TODO:Implement creating of expense sheet by adding to list when validation against empty textfield is true.
-  //TODO:Expense sheet will be of type expenseSheetModel.
-  //TODO:Format amount in ₦.
-  //TODO:Save in localdb.
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,10 +53,9 @@ class _CreateNewBalanceSheetScreenState extends State<CreateNewBalanceSheetScree
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
                     onPressed: () {
-                      //TODO:create new balance sheet.
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (_) => BalanceSheetDetailScreen()),
+                        MaterialPageRoute(builder: (_) => AnExpenseSheetDetailsScreen()),
                       );
                     },
                   ),

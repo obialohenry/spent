@@ -3,10 +3,8 @@ import 'package:spent/src/components.dart';
 import 'package:spent/src/config.dart';
 import 'package:spent/src/screens.dart';
 
-class BalanceSheetDetailScreen extends StatelessWidget {
-  const BalanceSheetDetailScreen({super.key});
-//TODO:Pass in details of an expense sheet, including the list of expenses which will be of type ExpenseModel.
-  //TODO:Just pass in the ExpenseSheetModel containing everything about a particular expense sheet.
+class AnExpenseSheetDetailsScreen extends StatelessWidget {
+  const AnExpenseSheetDetailsScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,7 +59,7 @@ class BalanceSheetDetailScreen extends StatelessWidget {
       ),
       floatingActionButton: GestureDetector(
         onTap: () {
-          Navigator.push(context, MaterialPageRoute(builder: (_) => AddExpenseScreen()));
+          Navigator.push(context, MaterialPageRoute(builder: (_) => AddAnExpenseItemScreen()));
         },
         child: ShimmerSlide(
           child: Container(

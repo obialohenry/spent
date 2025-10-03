@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:spent/src/config.dart';
 import 'package:spent/view/components/custom_texts.dart';
 
-class EmptyItemsFeedbackMessage extends StatelessWidget {
+class EmptyItemsMessage extends StatelessWidget {
   ///Creates a widget displaying a container with border, and a centered text [message] inside.
-  const EmptyItemsFeedbackMessage({super.key, required this.message,this.height,this.width});
+  const EmptyItemsMessage({super.key, required this.message, this.height, this.width});
   final double? height;
   final double? width;
   final String? message;

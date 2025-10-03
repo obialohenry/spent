@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:spent/src/components.dart';
 import 'package:spent/src/config.dart';
 import 'package:spent/src/screens.dart';
-import 'package:spent/view/components/empty_items_feedback.dart';
+import 'package:spent/view/components/empty_items_message.dart';
 import 'package:spent/view_model/expense_sheet_view_model.dart';
 
 class ExpenseSheetsScreen extends ConsumerWidget {
@@ -53,7 +53,7 @@ class ExpenseSheetsScreen extends ConsumerWidget {
           ? Column(
               children: [
                 Spacer(flex: 1),
-                Center(child: EmptyItemsFeedbackMessage(message: "No Expense Sheets.")),
+                Center(child: EmptyItemsMessage(message: "No Expense Sheets.")),
                 Spacer(flex: 2),
               ],
             )

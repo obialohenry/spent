@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:spent/src/components.dart';
 import 'package:spent/src/config.dart';
 import 'package:spent/src/screens.dart';
+import 'package:spent/view/components/empty_items_feedback.dart';
+import 'package:spent/view_model/expense_sheet_view_model.dart';
 
-class ExpenseSheetsScreen extends StatefulWidget {
+class ExpenseSheetsScreen extends ConsumerWidget {
   const ExpenseSheetsScreen({super.key});
 
   @override
-  State<ExpenseSheetsScreen> createState() => _ExpenseSheetsScreenState();
-}
-
-class _ExpenseSheetsScreenState extends State<ExpenseSheetsScreen> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final expenseSheetProvider = ref.read(expenseSheetViewModel);
     return Scaffold(
       backgroundColor: SpentColors.kIvoryWhite,
       appBar: AppBar(
@@ -50,7 +49,15 @@ class _ExpenseSheetsScreenState extends State<ExpenseSheetsScreen> {
           ),
         ],
       ),
-      body: Padding(
+      body: expenseSheetProvider.expenseSheets.isEmpty
+          ? Column(
+              children: [
+                Spacer(flex: 1),
+                Center(child: EmptyItemsFeedbackMessage(message: "No Expense Sheets.")),
+                Spacer(flex: 2),
+              ],
+            )
+          : Padding(
         padding: EdgeInsetsGeometry.symmetric(vertical: 32, horizontal: 16),
         child: ListView.builder(
           physics: const BouncingScrollPhysics(),
@@ -102,11 +109,13 @@ class ExpenseSheet extends StatelessWidget {
         padding: EdgeInsets.only(right: 20),
         child: Icon(Icons.delete, size: 30, color: SpentColors.kBrightRed),
       ),
-      onDismissed: (direction) {
-      },
+      onDismissed: (direction) {},
       child: GestureDetector(
         onTap: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context)=>AnExpenseSheetDetailsScreen()));
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => AnExpenseSheetDetailsScreen()),
+          );
         },
         child: Container(
           margin: EdgeInsets.only(bottom: 8),
@@ -123,22 +132,12 @@ class ExpenseSheet extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TextView(text: title, fontSize: 20, fontWeight: FontWeight.bold),
-                  TextView(
-                    text: amountRemaining,
-                    fontSize: 16,
-                    color: SpentColors.kPrimary,
-                  ),
+                  TextView(text: amountRemaining, fontSize: 16, color: SpentColors.kPrimary),
                 ],
               ),
               Gap(8),
-              ColoredTexts(
-                leadingText: '${SpentStrings.tipCreated}: ',
-                trailingText: dateCreated,
-              ),
-              ColoredTexts(
-                leadingText: '${SpentStrings.tipTotal}: ',
-                trailingText: totalAmount,
-              ),
+              ColoredTexts(leadingText: '${SpentStrings.tipCreated}: ', trailingText: dateCreated),
+              ColoredTexts(leadingText: '${SpentStrings.tipTotal}: ', trailingText: totalAmount),
             ],
           ),
         ),

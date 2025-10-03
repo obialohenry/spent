@@ -20,7 +20,7 @@ class SplashViewModel with ChangeNotifier {
   Ref ref;
   SplashViewModel(this.ref);
   Future<void> checkUser(context) async {
-    ref.read(spentLocalDb).getFirstTimeOnAppStatus();
+    await ref.read(spentLocalDb).getFirstTimeOnAppStatus();
     await Future.delayed(Duration(seconds: 2));
 
     if (!context.mounted) return;

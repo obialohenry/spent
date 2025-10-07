@@ -6,3 +6,4 @@ export 'package:spent/view/components/button.dart';
 export 'package:spent/view/components/app_bar.dart';
 export 'package:spent/view/components/custom_text_field.dart';
 export 'package:spent/view/components/colored_texts.dart';
+export 'package:spent/view/components/empty_items_message.dart';

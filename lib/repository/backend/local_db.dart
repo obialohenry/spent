@@ -40,9 +40,9 @@ class SpentLocalDb with ChangeNotifier {
   Future<void> putAnExpenseSheet({
     required String id,
     required String title,
-    required double totalAmount,
-    required String dateCreated,
-    required double amountRemaining,
+    required int totalAmount,
+    required DateTime dateCreated,
+    required int amountRemaining,
   }) async {
     // Put an expense sheet in.
     await _expenseSheetBox.put(id, {

@@ -1,9 +1,9 @@
 class ExpenseSheet {
   String? id;
   String? title;
-  String? amountRemaining;
-  String? dateCreated;
-  String? totalAmount;
+  int? amountRemaining;
+  DateTime? dateCreated;
+  int? totalAmount;
 
   ExpenseSheet({this.id, this.title, this.amountRemaining, this.dateCreated, this.totalAmount});
 
@@ -18,9 +18,9 @@ class ExpenseSheet {
   ExpenseSheet copyAndUpdate({
     String? id,
     String? title,
-    String? amountRemaining,
-    String? dateCreated,
-    String? totalAmount,
+    int? amountRemaining,
+    DateTime? dateCreated,
+    int? totalAmount,
   }) {
     return ExpenseSheet(
       id: id ?? this.id,

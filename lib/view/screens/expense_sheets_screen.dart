@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:spent/src/components.dart';
 import 'package:spent/src/config.dart';
+import 'package:spent/src/model.dart';
 import 'package:spent/src/screens.dart';
-import 'package:spent/view/components/empty_items_message.dart';
+import 'package:spent/utils/utils.dart';
 import 'package:spent/view_model/expense_sheet_view_model.dart';
 
 class ExpenseSheetsScreen extends ConsumerWidget {
@@ -58,37 +59,40 @@ class ExpenseSheetsScreen extends ConsumerWidget {
               ],
             )
           : Padding(
-        padding: EdgeInsetsGeometry.symmetric(vertical: 32, horizontal: 16),
-        child: ListView.builder(
-          physics: const BouncingScrollPhysics(),
-          shrinkWrap: true,
-          itemCount: 5,
-          itemBuilder: (context, index) {
-            return ExpenseSheet(
-              // key: ValueKey(''),
-              title: 'FreLancee Payment',
-              amountRemaining: '₦ 45,000',
-              dateCreated: 'Aug 30',
-              totalAmount: '₦ 80,000',
-            );
-          },
-        ),
-      ),
+              padding: EdgeInsetsGeometry.symmetric(vertical: 32, horizontal: 16),
+              child: ListView.builder(
+                physics: const BouncingScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: expenseSheetProvider.expenseSheets.length,
+                itemBuilder: (context, index) {
+                  ExpenseSheet expenseSheet = expenseSheetProvider.expenseSheets[index];
+                  return ExpenseSheetSummary(
+                    id: expenseSheet.id!,
+                    title: expenseSheet.title!,
+                    amountRemaining: Utils.formatPrice(expenseSheet.amountRemaining!),
+                    dateCreated: Utils.formatDate(expenseSheet.dateCreated!),
+                    totalAmount: Utils.formatPrice(expenseSheet.totalAmount!),
+                  );
+                },
+              ),
+            ),
     );
   }
 }
 
-class ExpenseSheet extends StatelessWidget {
-  ///Creates a widget displaying a name, date created,
-  ///total amount, and amount remaining of a particular balance sheet.
-
+class ExpenseSheetSummary extends StatelessWidget {
+  final String id;
   final String title;
   final String amountRemaining;
   final String dateCreated;
   final String totalAmount;
 
-  const ExpenseSheet({
+  ///Creates a widget displaying a name, date created,
+  ///total amount, and amount remaining of a particular balance sheet.
+
+  const ExpenseSheetSummary({
     super.key,
+    required this.id,
     required this.title,
     required this.amountRemaining,
     required this.dateCreated,
@@ -98,7 +102,7 @@ class ExpenseSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dismissible(
-      key: ValueKey(''),
+      key: ValueKey(id),
       direction: DismissDirection.endToStart,
       background: Container(
         decoration: BoxDecoration(

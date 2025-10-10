@@ -1,6 +1,7 @@
 class SpentStrings {
   static const spent = 'Spent';
   static const inter = 'Inter';
+  static const locale = "en_NG";
   static const hdrTrackYourSpendingEffortlessly = 'Track Your Spending, Effortlessly';
   static const btnGetStarted = 'Get Started';
   static const balanceSheetDescription =
@@ -16,4 +17,8 @@ class SpentStrings {
   static const hintAmountSpent = 'Amount Spent';
   static const hintExpenseName = 'Name of expense';
   static const tipRemaining = 'Remaining';
+  static const msgEmptyTextField = 'This field cannot be empty.';
+  static const errErrorOccured = 'Error Occured';
+  static const errYouWillFindItHere = 'You will probably find the error here..';
+  static const errTheErrorItself = 'The error itself..';
 }

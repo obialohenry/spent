@@ -1,4 +1,5 @@
 import 'package:intl/intl.dart';
+import 'package:spent/src/config.dart';
 
 class Utils {
   ///Format a given [amount] as a price string.
@@ -9,14 +10,14 @@ class Utils {
   /// ```
   /// Utils.formatPrice(12500); // ₦ 12,500
   /// ```
-  static String formatPrice(int amount) {
-    final formatAmount = NumberFormat("#,###", "en_NG").format(amount);
+  static String formatPrice(int amount, [String pattern = "#,###"]) {
+    final formatAmount = NumberFormat(pattern, SpentStrings.locale).format(amount);
     return "₦ $formatAmount";
   }
 
   ///Format the given [date] as a month and day string (e.g., "October 7").
-  static String formatDate(DateTime date) {
-    return DateFormat("MMMM d").format(date);
+  static String formatDate(DateTime date, [String pattern = "MMMM d"]) {
+    return DateFormat(pattern).format(date);
   }
   
   ///Validate that a text field is not empty.
@@ -25,7 +26,7 @@ class Utils {
   ///otherwise, returns null to indicate the field is valid.
   static String? validateEmptyTextField(String? value) {
     if (value!.trim().isEmpty) {
-      return 'This field cannot be empty.';
+      return SpentStrings.msgEmptyTextField;
     } 
       return null;
     

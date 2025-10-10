@@ -7,6 +7,17 @@ class ExpenseSheet {
 
   ExpenseSheet({this.id, this.title, this.amountRemaining, this.dateCreated, this.totalAmount});
 
+  ///Takes in a `json` object, and returns it as an `ExpenseSheet`.
+  factory ExpenseSheet.fromJson(Map<String, dynamic> json) {
+    return ExpenseSheet(
+      id: json['id'] as String?,
+      title: json['name'] as String?,
+      amountRemaining: json['remainingAmount'] as int?,
+      dateCreated: json['createdAt'] as DateTime?,
+      totalAmount: json['amount'] as int?,
+    );
+  }
+
   @override
   String toString() =>
       "ExpenseSheet(id: $id,title: $title,amountRemaining: $amountRemaining,dateCreated: $dateCreated,totalAmount:$totalAmount,)";

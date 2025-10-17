@@ -37,7 +37,7 @@ class SpentLocalDb with ChangeNotifier {
     print("👀 First time on app? ${DummyData.firstTimeOnApp}");
   }
 
-  Future<void> putAnExpenseSheet({
+  Future<void> saveExpenseSheet({
     required String id,
     required String title,
     required int totalAmount,
@@ -45,7 +45,8 @@ class SpentLocalDb with ChangeNotifier {
     required int amountRemaining,
   }) async {
     // Put an expense sheet in.
-    await _expenseSheetBox.put(id, {
+    await _expenseSheetBox.put(id, <String, dynamic>{
+      'id': id,
       'name': title,
       'amount': totalAmount,
       'createdAt': dateCreated,
@@ -53,9 +54,13 @@ class SpentLocalDb with ChangeNotifier {
     });
   }
 
-  Future<Map<String, Map<String, dynamic>>?> getExpenseSheets() async {
+  Future<Map<String, Map<String, dynamic>>> getExpenseSheets() async {
     // Returns a Map<String, Map> with all keys and entries
     final expenseSheetsMap = await _expenseSheetBox.getAllValues();
     return expenseSheetsMap;
+  }
+
+  Future<void> deleteExpenseSheet(String id) async {
+    await _expenseSheetBox.delete(id);
   }
 }

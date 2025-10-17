@@ -13,4 +13,5 @@ class SpentColors {
   static const kBlushPetal = Color(0xffF5D4D5);
   static const kFrostedSteel = Color(0xffA9B2BB);
   static const kCloudWhisper = Color(0xffE9E9EA);
+  static const kDeepCharcoal = Color(0xff1D2226);
 }

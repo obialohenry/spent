@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:spent/src/components.dart';
 import 'package:spent/src/config.dart';
 import 'package:spent/utils/utils.dart';
-import 'package:spent/view_model/expense_sheet_view_model.dart';
+import 'package:spent/view_model/expense_sheet_and_items_view_model.dart';
 import 'package:uuid/uuid.dart';
 
 class CreateNewExpenseSheetScreen extends ConsumerStatefulWidget {
@@ -51,10 +51,11 @@ class _CreateNewExpenseSheetScreenState extends ConsumerState<CreateNewExpenseSh
                   SpentTextField(
                     controller: _totalAmountController,
                     hint: SpentStrings.hintTotalAmount,
+                    keyboardType: TextInputType.number,
                     onChanged: (amount) {
                       ref
-                          .read(expenseSheetViewModel)
-                          .formatASheetsTotalAmount(_totalAmountController.text);
+                          .read(expenseSheetAndItemsViewModel)
+                          .formatASheetsTotalAmount(_totalAmountController, amount);
                     },
                     validator: (value) => Utils.validateEmptyTextField(value),
                   ),
@@ -75,12 +76,12 @@ class _CreateNewExpenseSheetScreenState extends ConsumerState<CreateNewExpenseSh
                         _createNewExSheetFormKey.currentState!.save();
                         final uuid = Uuid().v4();
                         await ref
-                            .read(expenseSheetViewModel)
+                            .read(expenseSheetAndItemsViewModel)
                             .createExpenseSheet(
                               context,
                               id: uuid,
                               sheetName: _sheetNameController.text,
-                              totalAmount: _totalAmountController.text,
+                              totalAmount: _totalAmountController.text.replaceAll(',', ''),
                             );
                       }
                     },

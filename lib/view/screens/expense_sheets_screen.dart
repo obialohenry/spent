@@ -5,14 +5,26 @@ import 'package:spent/src/config.dart';
 import 'package:spent/src/model.dart';
 import 'package:spent/src/screens.dart';
 import 'package:spent/utils/utils.dart';
-import 'package:spent/view_model/expense_sheet_view_model.dart';
+import 'package:spent/view_model/expense_sheet_and_items_view_model.dart';
 
-class ExpenseSheetsScreen extends ConsumerWidget {
+class ExpenseSheetsScreen extends ConsumerStatefulWidget {
   const ExpenseSheetsScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final expenseSheetProvider = ref.read(expenseSheetViewModel);
+  ConsumerState<ExpenseSheetsScreen> createState() => _ExpenseSheetsScreenState();
+}
+
+class _ExpenseSheetsScreenState extends ConsumerState<ExpenseSheetsScreen> {
+  @override
+  void initState() {
+    final expenseSheetProvider = ref.read(expenseSheetAndItemsViewModel);
+    expenseSheetProvider.getExpenseSheets();
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final expenseSheetProvider = ref.read(expenseSheetAndItemsViewModel);
     return Scaffold(
       backgroundColor: SpentColors.kIvoryWhite,
       appBar: AppBar(
@@ -54,7 +66,7 @@ class ExpenseSheetsScreen extends ConsumerWidget {
           ? Column(
               children: [
                 Spacer(flex: 1),
-                Center(child: EmptyItemsMessage(message: "No Expense Sheets.")),
+                Center(child: EmptyItemsMessage(message: SpentStrings.msgNoExpenseSheets)),
                 Spacer(flex: 2),
               ],
             )
@@ -68,6 +80,7 @@ class ExpenseSheetsScreen extends ConsumerWidget {
                   ExpenseSheet expenseSheet = expenseSheetProvider.expenseSheets[index];
                   return ExpenseSheetSummary(
                     id: expenseSheet.id!,
+                    index: index,
                     title: expenseSheet.title!,
                     amountRemaining: Utils.formatPrice(expenseSheet.amountRemaining!),
                     dateCreated: Utils.formatDate(expenseSheet.dateCreated!),
@@ -80,7 +93,8 @@ class ExpenseSheetsScreen extends ConsumerWidget {
   }
 }
 
-class ExpenseSheetSummary extends StatelessWidget {
+class ExpenseSheetSummary extends ConsumerWidget {
+  final int index;
   final String id;
   final String title;
   final String amountRemaining;
@@ -92,6 +106,7 @@ class ExpenseSheetSummary extends StatelessWidget {
 
   const ExpenseSheetSummary({
     super.key,
+    required this.index,
     required this.id,
     required this.title,
     required this.amountRemaining,
@@ -100,7 +115,8 @@ class ExpenseSheetSummary extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final expenseSheetProvider = ref.read(expenseSheetAndItemsViewModel);
     return Dismissible(
       key: ValueKey(id),
       direction: DismissDirection.endToStart,
@@ -113,7 +129,9 @@ class ExpenseSheetSummary extends StatelessWidget {
         padding: EdgeInsets.only(right: 20),
         child: Icon(Icons.delete, size: 30, color: SpentColors.kBrightRed),
       ),
-      onDismissed: (direction) {},
+      onDismissed: (direction) {
+        expenseSheetProvider.deleteExpenseSheet(index: index, id: id);
+      },
       child: GestureDetector(
         onTap: () {
           Navigator.push(
